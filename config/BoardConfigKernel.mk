@@ -270,10 +270,22 @@ KERNEL_MAKE_FLAGS += LIBCLANG_PATH=$(TARGET_KERNEL_CLANG_PATH)/lib
 # Set the out dir for the kernel's O= arg
 # This needs to be an absolute path, so only set this if the standard out dir isn't used
 OUT_DIR_PREFIX := $(shell echo $(OUT_DIR) | sed -e 's|/target/.*$$||g')
-KERNEL_BUILD_OUT_PREFIX :=
+KERNEL_BUILD_OUT_PREFIX := /tmp/dummy_kernel_out/
 ifeq ($(OUT_DIR_PREFIX),out)
     KERNEL_BUILD_OUT_PREFIX := $(BUILD_TOP)/
 endif
+
+# Default these to non-empty values so Soong's lineage_generator can resolve them
+# (We use prebuilt kernel - these aren't actually used at runtime)
+# NOTE: TARGET_KERNEL_PLATFORM_TARGET intentionally NOT defaulted — leaving it
+# empty causes kernel.mk to take the prebuilt-kernel branch instead of the
+# kernel-platform-source branch (which would fail on missing source).
+TARGET_KERNEL_SOURCE ?= device/nubia/NX809J-kernel
+KERNEL_ARCH ?= arm64
+KERNEL_MAKE_CMD ?= true
+KERNEL_MAKE_FLAGS ?=
+KERNEL_CROSS_COMPILE ?=
+KERNEL_PATH ?= /tmp/dummy_kernel_path
 
 ifneq ($(TARGET_KERNEL_PLATFORM_TARGET),)
 KERNEL_PATH := $(abspath $(BUILD_TOP)/../kernel-$(TARGET_KERNEL_VERSION))

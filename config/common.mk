@@ -275,13 +275,13 @@ PRODUCT_PACKAGES += \
     NetworkStackOverlay \
     PermissionControllerOverlay
 
-# Translations
-CUSTOM_LOCALES += \
-    ast_ES \
-    gd_GB \
-    cy_GB \
-    fur_IT \
-    nn_NO
+# Translations (CUSTOM_LOCALES disabled — not compatible with current build)
+# CUSTOM_LOCALES += \
+#     ast_ES \
+#     gd_GB \
+#     cy_GB \
+#     fur_IT \
+#     nn_NO
 
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/crowdin/overlay
 PRODUCT_PACKAGE_OVERLAYS += vendor/crowdin/overlay
