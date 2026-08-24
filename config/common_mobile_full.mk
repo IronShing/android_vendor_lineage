@@ -13,8 +13,12 @@ PRODUCT_PACKAGES += \
     Camelot \
     Etar \
     Recorder \
+<<<<<<< ours
     Twelve
 endif
+=======
+    Seedvault
+>>>>>>> theirs
 
 ifneq ($(PRODUCT_NO_CAMERA),true)
 PRODUCT_PACKAGES += \

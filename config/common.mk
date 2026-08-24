@@ -385,14 +385,15 @@ PRODUCT_PACKAGES += \
     SettingsEvo
 
 # Translations
-CUSTOM_LOCALES += \
-    ast_ES \
-    ckb_IQ \
-    ckb_IR \
-    gd_GB \
-    cy_GB \
-    fur_IT \
-    nn_NO
+# NX809J: CUSTOM_LOCALES disabled — incompatible with this build.
+# CUSTOM_LOCALES += \
+#     ast_ES \
+#     ckb_IQ \
+#     ckb_IR \
+#     gd_GB \
+#     cy_GB \
+#     fur_IT \
+#     nn_NO
 
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/crowdin/overlay
 PRODUCT_PACKAGE_OVERLAYS += vendor/crowdin/overlay
