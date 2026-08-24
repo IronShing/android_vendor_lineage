@@ -208,10 +208,21 @@ endif
 # Set the out dir for the kernel's O= arg
 # This needs to be an absolute path, so only set this if the standard out dir isn't used
 OUT_DIR_PREFIX := $(shell echo $(OUT_DIR) | sed -e 's|/target/.*$$||g')
-KERNEL_BUILD_OUT_PREFIX :=
+KERNEL_BUILD_OUT_PREFIX := /tmp/dummy_kernel_out/
 ifeq ($(OUT_DIR_PREFIX),out)
     KERNEL_BUILD_OUT_PREFIX := $(BUILD_TOP)/
 endif
+
+# NX809J: default these to non-empty so Soong's lineage_generator can resolve them.
+# We ride a prebuilt kernel, so they are never used at runtime.
+# TARGET_KERNEL_PLATFORM_TARGET is intentionally NOT defaulted — leaving it empty
+# makes kernel.mk take the prebuilt-kernel branch instead of the source branch.
+TARGET_KERNEL_SOURCE ?= device/nubia/NX809J-kernel
+KERNEL_ARCH ?= arm64
+KERNEL_MAKE_CMD ?= true
+KERNEL_MAKE_FLAGS ?=
+KERNEL_CROSS_COMPILE ?=
+KERNEL_PATH ?= /tmp/dummy_kernel_path
 
 ifneq ($(TARGET_KERNEL_PLATFORM_TARGET),)
 KERNEL_PATH := $(abspath $(BUILD_TOP)/kernel/platform/kernel-$(TARGET_KERNEL_VERSION))
