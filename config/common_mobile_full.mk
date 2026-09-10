@@ -10,10 +10,13 @@ PRODUCT_PACKAGES += \
 
 ifeq ($(WITH_GMS),false)
 PRODUCT_PACKAGES += \
-    Camelot \
     Etar \
     Recorder \
     Twelve
+ifneq ($(TARGET_EXCLUDES_CAMELOT),true)
+PRODUCT_PACKAGES += \
+    Camelot
+endif
 endif
 
 ifneq ($(PRODUCT_NO_CAMERA),true)
