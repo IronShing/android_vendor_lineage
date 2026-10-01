@@ -1,0 +1,9 @@
+# Unlocks Settings > System > Keyboard > "Show the keyboard switch key": lets the user
+# hide the globe/IME-switcher button the IME-drawn navigation bar shows in gesture mode
+# (Settings.Secure.IME_SWITCHER_BUTTON_IN_NAVBAR_ENABLED, default on = AOSP behaviour).
+flag_value {
+  package: "android.view.inputmethod"
+  name: "ime_switcher_button_in_navbar_setting"
+  state: ENABLED
+  permission: READ_ONLY
+}
