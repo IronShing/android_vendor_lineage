@@ -9,8 +9,14 @@ ifeq ($(filter $(LINEAGE_BUILD), \
     mustang blazer frankel rango \
     stallion yogi kodiak grizzly cubs \
     ),)
+# 2026-10-05: was mustang:CANARY — Google stopped certifying canary/beta builds, so that
+# baked ro.build.fingerprint failed Play Integrity outright (BASIC+DEVICE+STRONG all red;
+# XDA #306/#312). Use a stable, certified release fingerprint instead (same as the runtime
+# PixelDeviceRepository FALLBACK). DroidGuard reads this system property.
+# 12.3 (2026-10-07) upstream switched to grizzly_beta; beta was tested 10-05 = BASIC only, same
+# as stable, so we keep the stable release fingerprint.
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    BuildFingerprint=google/bluejay_beta/bluejay:CANARY/ZP11.260918.007/16484274:user/release-keys
+    BuildFingerprint=google/mustang/mustang:17/CP2A.260805.005/15828068:user/release-keys
 endif
 endif
 
